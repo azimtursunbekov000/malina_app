@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_task/internal/theme/text_theme.dart';
+import 'package:test_task/internal/theme/theme_helper.dart';
 
 class OverlayButtonWidget extends StatelessWidget {
   final VoidCallback onTap;
@@ -21,7 +22,7 @@ class OverlayButtonWidget extends StatelessWidget {
         width: 60,
         height: 60,
         decoration: BoxDecoration(
-          color: Color(0xffF5F5F6),
+          color: ThemeHelper.white,
           borderRadius: BorderRadius.circular(60),
         ),
         child: Column(

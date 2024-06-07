@@ -5,8 +5,8 @@ import 'package:test_task/internal/commons/common_text_field.dart';
 import 'package:test_task/internal/theme/text_theme.dart';
 import 'package:test_task/internal/theme/theme_helper.dart';
 
-class TapeScreen extends StatelessWidget {
-  const TapeScreen({super.key});
+class MenuScreen extends StatelessWidget {
+  const MenuScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

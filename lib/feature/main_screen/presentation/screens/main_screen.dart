@@ -3,7 +3,7 @@ import 'package:test_task/feature/basket_screen/presentation/screens/food_screen
 import 'package:test_task/feature/basket_screen/presentation/screens/goods_screen.dart';
 import 'package:test_task/feature/favorites_screen/presentation/screens/favorites_screen.dart';
 import 'package:test_task/feature/main_screen/presentation/widget/overlay_button_widget.dart';
-import 'package:test_task/feature/menu_sccreen/presentation/screens/menu_screens.dart';
+import 'package:test_task/feature/menu_screen/presentation/screens/menu_screens.dart';
 import 'package:test_task/feature/profile_screen/presentation/screens/profile_screen.dart';
 import 'package:test_task/feature/tape_screen/presentation/screens/tape_screen.dart';
 
@@ -15,7 +15,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedTab = 0;
+  int _selectedTab = 2;
   bool _isCartMenuOpen = false;
 
   final List<Widget> _pages = [
@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  void _toggleCartMenu(BuildContext context) {
+  void _toggleCartMenu() {
     setState(() {
       _isCartMenuOpen = !_isCartMenuOpen;
     });
@@ -47,11 +47,7 @@ class _MainScreenState extends State<MainScreen> {
           _pages[_selectedTab],
           if (_isCartMenuOpen)
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isCartMenuOpen = false;
-                });
-              },
+              onTap: _toggleCartMenu,
               child: Container(
                 padding: const EdgeInsets.only(right: 12),
                 color: Colors.transparent,
@@ -73,29 +69,31 @@ class _MainScreenState extends State<MainScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          OverlayButtonWidget(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const FoodScreen(),
-                                ),
-                              );
-                            },
-                            imageURL: 'assets/images/food.png',
-                            title: 'Еда',
-                          ),
-                          const SizedBox(height: 10),
-                          OverlayButtonWidget(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const GoodsScreen(),
-                                ),
-                              );
-                            },
-                            imageURL: 'assets/images/сosmetic.png',
-                            title: 'Товары',
-                          ),
+                          if (_isCartMenuOpen)
+                            OverlayButtonWidget(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const FoodScreen(),
+                                  ),
+                                );
+                              },
+                              imageURL: 'assets/images/food.png',
+                              title: 'Еда',
+                            ),
+                          if (_isCartMenuOpen) const SizedBox(height: 10),
+                          if (_isCartMenuOpen)
+                            OverlayButtonWidget(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const GoodsScreen(),
+                                  ),
+                                );
+                              },
+                              imageURL: 'assets/images/сosmetic.png',
+                              title: 'Товары',
+                            ),
                         ],
                       ),
                     ),
@@ -138,11 +136,17 @@ class _MainScreenState extends State<MainScreen> {
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Image.asset(
-                'assets/images/menu.png',
-                width: 25,
-                height: 25,
-              ),
+              child: _selectedTab == 2
+                  ? Image.asset(
+                      'assets/images/menu.png',
+                      width: 25,
+                      height: 25,
+                    )
+                  : Image.asset(
+                      'assets/images/back_to_menu.png',
+                      width: 25,
+                      height: 25,
+                    ),
             ),
             label: '',
           ),
@@ -156,9 +160,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: GestureDetector(
-              onTap: () {
-                _toggleCartMenu(context);
-              },
+              onTap: _toggleCartMenu,
               child: Image.asset(
                 'assets/images/basket_icon.png',
                 width: 25,
