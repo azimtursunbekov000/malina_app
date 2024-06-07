@@ -84,6 +84,7 @@ class _FoodScreenState extends State<FoodScreen> {
               ),
               SizedBox(height: 20),
               ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: 1,
                 itemBuilder: (context, index) {
@@ -135,7 +136,6 @@ class _FoodScreenState extends State<FoodScreen> {
                             const ColumnContentWidget(
                               title: 'Том ям',
                               description: 'Пицца с соусом том ям 230 гр',
-                              price: '250 C',
                             ),
                             Spacer(),
                             Column(

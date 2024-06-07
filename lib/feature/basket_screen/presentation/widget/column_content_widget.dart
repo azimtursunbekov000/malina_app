@@ -6,13 +6,11 @@ import 'package:test_task/internal/theme/theme_helper.dart';
 class ColumnContentWidget extends StatelessWidget {
   final String title;
   final String description;
-  final String price;
 
   const ColumnContentWidget({
     super.key,
     required this.title,
     required this.description,
-    required this.price,
   });
 
   @override
