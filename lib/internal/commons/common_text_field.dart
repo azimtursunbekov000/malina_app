@@ -16,6 +16,7 @@ class CommonTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: 60,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -35,7 +36,7 @@ class CommonTextField extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          contentPadding: const EdgeInsets.all(15.0),
+          contentPadding: EdgeInsets.zero,
           hintText: hintText,
           prefixIcon: prefixIcon,
           hintStyle: const TextStyle(

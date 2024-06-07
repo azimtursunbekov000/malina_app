@@ -5,6 +5,8 @@ class CommonContainer extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Widget child;
   final String? assetImage;
+  final double? height;
+  final double? width;
 
   const CommonContainer({
     super.key,
@@ -12,11 +14,15 @@ class CommonContainer extends StatelessWidget {
     required this.child,
     this.padding,
     this.assetImage,
+    this.height,
+    this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
+      height: height,
       padding: padding,
       decoration: BoxDecoration(
         color: color,

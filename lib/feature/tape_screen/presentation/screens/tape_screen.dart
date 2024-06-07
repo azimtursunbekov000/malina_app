@@ -13,7 +13,7 @@ class TapeScreen extends StatelessWidget {
     const List<String> title = ['Вакансии', 'Маркет', 'Цветы', 'Кофе'];
 
     return Scaffold(
-      backgroundColor: ThemeHelper.white,
+      backgroundColor: ThemeHelper.backgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
